@@ -1,0 +1,82 @@
+<div class="space-y-12 bg-white rounded-3xl shadow-sm border border-slate-100 p-8">
+
+    <!-- HEADER -->
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6 border-b border-slate-200 pb-6">
+        <div>
+            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900">
+                Recap <span class="text-blue-600">Project</span>
+            </h2>
+            <p class="text-slate-400 mt-2 uppercase tracking-[0.3em] text-xs font-bold">
+                Fetched from GitHub API
+            </p>
+        </div>
+
+        <div class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full border border-blue-100">
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-blue-700">
+                Live Connection
+            </span>
+        </div>
+    </div>
+
+    <!-- PROJECT GRID -->
+    <div id="github-projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- LOADING -->
+        <div class="col-span-full py-16 text-center">
+            <div class="inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p class="mt-4 text-xs font-bold uppercase tracking-widest text-slate-400">
+                Syncing Repositories...
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    const username = 'Ney535';
+    const projectContainer = $('#github-projects');
+
+    $.ajax({
+        url: "https://api.github.com/users/" + username + "/repos?sort=updated&per_page=6",
+        method: "GET",
+        dataType: "json",
+        success: function(repos) {
+            let cards = "";
+            
+            if (repos.length === 0) {
+                projectContainer.html('<p class="col-span-full text-center text-slate-400 uppercase text-xs">No public projects found.</p>');
+                return;
+            }
+
+            repos.forEach(function(repo) {
+                const description = repo.description || "Project akuntansi dan teknologi terintegrasi.";
+                const language = repo.language || "Web Stack";
+
+                cards += '<a href="' + repo.html_url + '" target="_blank" class="group bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">';
+                
+                cards += '  <div class="flex justify-between items-center mb-4">';
+                cards += '    <span class="text-xs font-bold text-blue-600 uppercase">' + language + '</span>';
+                cards += '    <span class="text-xs text-slate-400">↗</span>';
+                cards += '  </div>';
+
+                cards += '  <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition">' + repo.name + '</h3>';
+                cards += '  <p class="text-slate-500 text-sm mb-4">' + description + '</p>';
+
+                cards += '  <div class="flex gap-4 text-xs font-semibold text-slate-400">';
+                cards += '    <span>⭐ ' + repo.stargazers_count + '</span>';
+                cards += '    <span>🍴 ' + repo.forks_count + '</span>';
+                cards += '  </div>';
+
+                cards += '</a>';
+            });
+
+            projectContainer.html(cards);
+        },
+        error: function() {
+            projectContainer.html('<p class="col-span-full text-center text-red-500 font-bold uppercase text-xs">FAILED TO CONNECT TO GITHUB API.</p>');
+        }
+    });
+});
+</script>
