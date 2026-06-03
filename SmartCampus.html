@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showcase SmartCampus</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8f5f1;
+}
+
+/* SHOWCASE */
+.showcase{
+    padding:80px 10%;
+    min-height:100vh;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2rem;
+    color:#6f4e37;
+    margin-bottom:50px;
+    position:relative;
+}
+
+.section-title::after{
+    content:'';
+    width:120px;
+    height:3px;
+    background:#c9b29b;
+    display:block;
+    margin:12px auto;
+}
+
+.project-card{
+    max-width:1000px;
+    margin:auto;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:.3s;
+}
+
+.project-card:hover{
+    transform:translateY(-5px);
+}
+
+.project-image{
+    width:100%;
+    height:350px;
+    overflow:hidden;
+}
+
+.project-image iframe{
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+.project-content{
+    padding:35px;
+}
+
+.project-content h3{
+    color:#6f4e37;
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.project-content p{
+    color:#555;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.tech-stack{
+    margin-bottom:25px;
+}
+
+.tech-stack span{
+    display:inline-block;
+    background:#ede3d7;
+    color:#6f4e37;
+    padding:8px 15px;
+    border-radius:20px;
+    margin:5px;
+    font-size:14px;
+    font-weight:500;
+}
+
+.project-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-demo{
+    background:#9c6b43;
+    color:white;
+}
+
+.btn-demo:hover{
+    background:#7b5333;
+}
+
+.btn-contact{
+    border:2px solid #9c6b43;
+    color:#9c6b43;
+}
+
+.btn-contact:hover{
+    background:#9c6b43;
+    color:white;
+}
+
+.project-info{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:30px;
+}
+
+.info-box{
+    background:#f8f5f1;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.info-box h4{
+    color:#6f4e37;
+    margin-bottom:8px;
+}
+
+.info-box p{
+    margin:0;
+    font-size:14px;
+}
+
+@media(max-width:768px){
+
+    .project-image{
+        height:250px;
+    }
+
+    .project-content h3{
+        font-size:1.6rem;
+    }
+
+    .project-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        text-align:center;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="showcase" id="showcase">
+
+    <h2 class="section-title">Showcase Project</h2>
+
+    <div class="project-card">
+
+        <div class="project-image">
+            <iframe
+                src="https://my-campus-neysa.vercel.app/"
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <div class="project-content">
+
+            <h3>SmartCampus</h3>
+
+            <p>
+                SmartCampus merupakan sistem informasi kampus berbasis web
+                yang dirancang untuk membantu mahasiswa dan pihak kampus
+                dalam mengakses informasi akademik secara cepat dan efisien.
+                Website ini menyediakan berbagai fitur yang memudahkan
+                pengelolaan data kampus dalam satu platform terintegrasi.
+            </p>
+
+            <div class="tech-stack">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>Responsive Design</span>
+                <span>Web Development</span>
+            </div>
+
+            <div class="project-buttons">
+                <a href="https://my-campus-neysa.vercel.app/"
+                   target="_blank"
+                   class="btn btn-demo">
+                    Live Demo
+                </a>
+
+                <a href="https://github.com/Ney535/NEYSA-AR-CV.git"
+                   target="_blank"
+                   class="btn btn-contact">
+                    Repository
+                </a>
+            </div>
+
+            <div class="project-info">
+
+                <div class="info-box">
+                    <h4>Jenis Proyek</h4>
+                    <p>Sistem Informasi Kampus</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Platform</h4>
+                    <p>Website</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Status</h4>
+                    <p>Selesai & Online</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>
